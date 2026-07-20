@@ -20,6 +20,12 @@ from sklearn.metrics import silhouette_score
 from sklearn.decomposition import PCA
 
 # --------------------------------------------------------------------------------
+# IDENTITAS PENYUSUN
+# --------------------------------------------------------------------------------
+NAMA = "Muhammad Ulul Azmi Nugroho"
+NIM = "E12.2024.01937"
+
+# --------------------------------------------------------------------------------
 # PAGE CONFIG
 # --------------------------------------------------------------------------------
 st.set_page_config(
@@ -280,6 +286,14 @@ def risk_tag(risk):
 # --------------------------------------------------------------------------------
 st.sidebar.markdown("## ⚙️ QC ANALYTICS")
 st.sidebar.caption("Analisis Clustering Cacat Produk — Industri Manufaktur")
+st.sidebar.markdown(
+    f'<div style="background:var(--panel); border:1px solid var(--line); '
+    f'border-left:3px solid var(--amber); border-radius:6px; padding:8px 12px; '
+    f'margin-bottom:10px; font-size:0.82rem;">'
+    f'<b style="color:var(--text);">{NAMA}</b><br>'
+    f'<span style="color:var(--muted);">NIM {NIM}</span></div>',
+    unsafe_allow_html=True,
+)
 page = st.sidebar.radio(
     "Navigasi",
     ["🏠 Beranda", "📊 Data & Eksplorasi", "🔍 Analisis Clustering", "💡 Interpretasi & Insight Bisnis", "ℹ️ Tentang Aplikasi"],
@@ -296,6 +310,15 @@ st.sidebar.caption(f"Data: {len(df):,} catatan cacat • {features.shape[0]} pro
 
 clustered, sil_score, evr = run_kmeans(features, k_choice)
 narratives = generate_cluster_narrative(clustered)
+
+# --------------------------------------------------------------------------------
+# IDENTITY STRIP — tampil di setiap halaman
+# --------------------------------------------------------------------------------
+st.markdown(
+    f'<div style="text-align:right; color:var(--muted); font-size:0.8rem; '
+    f'margin-bottom:6px;"><b style="color:var(--text);">{NAMA}</b> &nbsp;·&nbsp; NIM {NIM}</div>',
+    unsafe_allow_html=True,
+)
 
 # --------------------------------------------------------------------------------
 # PAGE 1 — BERANDA
